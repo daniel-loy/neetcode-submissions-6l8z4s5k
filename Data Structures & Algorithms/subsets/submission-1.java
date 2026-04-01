@@ -1,0 +1,22 @@
+class Solution {
+    List<List<Integer>> resultlist = new ArrayList<>();
+    public List<List<Integer>> subsets(int[] nums) {
+        dfs(nums,0,new ArrayList<>());
+        return resultlist;
+    }
+
+    public void dfs(int[] nums,int index,List<Integer> list){
+        // if(index>=nums.length){
+        //     return;
+        // }
+        System.out.println(list+" "+index);
+
+        resultlist.add(List.copyOf(list));
+
+        for(int i=index;i<nums.length;i++){
+            list.add(nums[i]);
+            dfs(nums,i+1,list);
+            list.remove(list.size()-1);
+        }
+    }
+}
